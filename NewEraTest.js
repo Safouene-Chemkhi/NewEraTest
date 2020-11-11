@@ -3,6 +3,17 @@ const io = require('console-read-write');
 const prompts = require('prompts');
 
 /**
+  * @desc swap 2 chr in a string
+  * @param1 number
+  * @param2 string
+  * @param3 string
+  * @return string 
+*/
+String.prototype.swap = function (index, chr1, chr2) {
+  return this.substr(0, index) + chr2 + chr1 + this.substr(index + 2);
+}
+
+/**
   * @desc Finding the next higher number
   * @param void $msg - Please type a number:
   * @return void - success or failure
@@ -10,24 +21,22 @@ const prompts = require('prompts');
 */
 
 async function ex1() {
-    io.write('Please type a number:');
-    var num = await io.read();
-    var  n = num.toString();
-    var found = false;
-    i=n.length-1;
-    while (!found  && i>0){
-         if(n[i]>n[i-1]){
-            found = true;
-             var x= n.charAt(i);
-             n = n.replace(n.charAt(i),n.charAt(i-1));
-             n = n.replace(n.charAt(i-1),x);
-             io.write(n);  
-         }
-         i--;
+  io.write('Please type a number:');
+  var num = await io.read();
+  var n = num.toString();
+  var found = false;
+  i = n.length - 1;
+  while (!found && i > 0) {
+    if (n[i] > n[i - 1]) {
+      found = true;
+      n = n.swap(i - 1, n[i - 1], n[i])
+      io.write(n)
     }
-    if (!found){
-        io.write('There is no such number!');
-    }
+    i--;
+  }
+  if (!found) {
+    io.write('There is no such number!');
+  }
 }
 
 
