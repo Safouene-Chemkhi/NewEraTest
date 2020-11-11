@@ -4,9 +4,10 @@ const prompts = require('prompts');
 
 
 /**
-  * @desc replace a char by specifying a index
+  * @desc swap 2 chr in a string
   * @param1 number
   * @param2 string
+  * @param3 string
   * @return string 
 */
 String.prototype.swap = function (index, chr1, chr2) {
