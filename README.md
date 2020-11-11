@@ -4,7 +4,7 @@ This a test as an evaluation to be admitted as a part-time dev with NewEra Inc.
 
 ## Installation
 
-Use the package manager [npm](https://pip.pypa.io/en/stable/) to install all dependecies.
+Use the package manager [npm](https://www.npmjs.com/get-npm) to install all dependecies.
 
 ```bash
 npm install console-read-write
