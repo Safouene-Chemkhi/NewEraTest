@@ -38,7 +38,7 @@ async function ex1() {
   * @exampel Apple, Apple, Orange, Apple => 3.05 $
 */
 
-async function ex2() {
+async function ex3() {
     io.write('Please type a list of products:');
     var x = await io.read();
     var list = x.split(", ");
@@ -46,16 +46,23 @@ async function ex2() {
         'Apple' :0.6,
         'Orange' :1.25
     }
+    totalAmount = {
+        'Apple' :0,
+        'Orange' :0
+    }
     var total = 0;
     for (let i = 0; i < list.length; i++) {
-        total += price[list[i]];
+        totalAmount[list[i]]+=1;
     }
+    var a =totalAmount['Apple'];
+    var b = totalAmount['Orange']
+    total = (((a-a%2)/2 +a%2)*price['Apple']) + (((b-b%3)/3 +b%3)*price['Orange']);
 
     io.write(total.toFixed(2) + '$');
 }
 
 
 /*********************Main************** */
-ex1();
-ex2();
+//ex1();
+ex3();
 
