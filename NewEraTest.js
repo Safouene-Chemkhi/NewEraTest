@@ -1,6 +1,6 @@
 // Imports
 const io = require('console-read-write');
-
+const prompts = require('prompts');
 
 /**
   * @desc Finding the next higher number
@@ -15,19 +15,19 @@ async function ex1() {
     var  n = num.toString();
     var found = false;
     i=n.length-1;
-    while (!found  || i<1){
+    while (!found  && i>0){
          if(n[i]>n[i-1]){
+            found = true;
              var x= n.charAt(i);
              n = n.replace(n.charAt(i),n.charAt(i-1));
              n = n.replace(n.charAt(i-1),x);
+             io.write(n);  
          }
+         i--;
     }
-    if (found){
-        io.write(n);
-    } else {
+    if (!found){
         io.write('There is no such number!');
     }
-    
 }
 
 
@@ -55,7 +55,35 @@ async function ex2() {
 }
 
 
-/*********************Main************** */
-ex1();
-ex2();
+/**
+  * @desc Main function to choose which function to execurte
+  * @param void $prompt
+  * @return void 
+*/
 
+async function main() {
+    const response = await prompts({
+        type: 'select',
+        name: 'value',
+        message: 'Pick a function to test',
+        choices: [
+          { title: 'Exerice 1', description: 'Finding next higher number', value: '1' },
+          { title: 'Exerice 2', description: 'Shopping system', value: '2' },
+
+        ],
+        initial: 0
+      })
+
+      if(response.value==='1'){
+          ex1();
+      }else{
+          ex3();
+      }
+}
+
+
+
+/*********************Main************** */
+
+
+main()
